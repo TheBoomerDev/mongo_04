@@ -53,7 +53,7 @@ alumnos = alumnos.map(alumno=>{
   alumno.asignaturas[1].nota = nota2
   return alumno
 })
-console.log(alumnos)
+console.log(JSON.stringify(alumnos) )
 
 
 
