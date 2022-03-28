@@ -57,3 +57,28 @@ console.log(JSON.stringify(alumnos) )
 
 
 
+// ====================================
+// https://www.npmjs.com/package/mongoose
+const mongoose = require('mongoose');
+
+const mAsignatura = require('./asignaturas.model')
+let guardarAlumno = async ()=>{
+    let marcas = new mAsignatura()
+    marcas.nombre = 'Marcas'
+    await marcas.save()
+
+    let bases = new mAsignatura()
+    bases.nombre = 'Bases'
+    await bases.save()
+
+
+}
+
+
+const database = "Vuesto enlace de 3T Studio -> Mirad MongoAtlas Connect"
+mongoose.connect(database).then(guardarAlumno)
+.catch(err => {
+    console.log(err);
+})
+
+
