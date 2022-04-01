@@ -61,24 +61,45 @@ console.log(JSON.stringify(alumnos) )
 // https://www.npmjs.com/package/mongoose
 const mongoose = require('mongoose');
 
-const mAsignatura = require('./asignaturas.model')
-let guardarAlumno = async ()=>{
-    let marcas = new mAsignatura()
-    marcas.nombre = 'Marcas'
-    await marcas.save()
 
-    let bases = new mAsignatura()
-    bases.nombre = 'Bases'
-    await bases.save()
+let guardarAlumno = async ()=>{
+    const mAsignatura = require('./asignaturas.model')
+
+    // SYNC
+    for (let idx = 0; idx < alumnos.length; idx++) {
+      const alumno = alumnos[idx];
+      let asign = new mAsignatura()
+
+      asign.nombre = alumno.nombre
+      console.log('Nombre:', alumno.nombre)
+
+      asign = await asign.save()
+    }
+
+    for (const alumno of alumnos) {
+
+    }
+
+    // ASYNC - PARALELO
+    let salvar = (alumno) => {
+
+    }
+
+
+    alumnos.forEach(salvar)
 
 
 }
 
+let manejaError = (err) => {
+  console.log(err);
+}
 
-const database = "Vuesto enlace de 3T Studio -> Mirad MongoAtlas Connect"
-mongoose.connect(database).then(guardarAlumno)
-.catch(err => {
-    console.log(err);
-})
+const database = "mongodb+srv://dev:A.joker.1@dev.kdfi4.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect(database)
+.then(guardarAlumno)
+.catch(manejaError)
+
+//*/
 
 
