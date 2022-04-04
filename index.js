@@ -93,9 +93,29 @@ let guardarAlumno = async ()=>{
     // SYNC
     for (let idx = 0; idx < alumnos.length; idx++) {
       let obj = new mAlumno()
+      const alumno = alumnos[idx]
+      obj.nombre    = alumno.nombre
+      obj.apellidos = alumno.apellidos
 
-      obj.nombre    = alumnos[idx].nombre
-      obj.apellidos = alumnos[idx].apellidos
+      let notas = []
+      let asignaturasAlumno = alumno.asignaturas
+      for (let idx = 0; idx < asignaturasAlumno.length; idx++) {
+        const asignatura = asignaturasAlumno[idx]
+
+        let nota = {
+          asignatura:'',
+          nota: asignatura.nota
+        }
+
+        if (asignatura.nombre === 'Marcas'){
+          nota.asignatura = asignatura1._id
+        }else{
+          nota.asignatura = asignatura2._id
+        }
+        notas.push(nota)
+
+      }
+      obj.asignaturas = notas
 
       obj = await obj.save()
       console.log('Alumno', obj)
