@@ -68,7 +68,7 @@ let guardarAlumno = async ()=>{
     // SYNC
     for (let idx = 0; idx < alumnos.length; idx++) {
       const alumno = alumnos[idx];
-      let asign = new mAsignatura()
+      let asign = new mAsignatura()º
 
       asign.nombre = alumno.nombre
       console.log('Nombre:', alumno.nombre)

@@ -2,26 +2,50 @@ let fnAsync = async ()=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
             resolve('Gollum')
-        }, 3000)
+        }, 30000)
     })
 }
 
+
 let fnSync = ()=>{
+
+    let subs
+    subs.subscribe((error, data)=>{
+
+    })
+
+
     setTimeout(()=>{
         console.log('Hola Mundo')
-    }, 1000)
+    }, 5000)
+}
+
+let fnSincrona = ()=>{
+    console.log('Hola Mundo')
+}
+
+let fnAsyncrona = (element)=>{
+    const callback = ()=>{
+        console.log('Gollum:', element)
+    }
+    setTimeout(callback, 3000)
 }
 
 let ejemplo = async ()=>{
 
-    let ar = [1,2,3,4,5,6,7,8,9,10]
+    // crea un array de 100 elementos enteros
+    let arr = Array.from({length: 100}, (v, k) => k)
 
-    ar.forEach(item=>{
-        fnAsync().then(res=>{
-            console.log('Resultado:', res)
-        }).catch(err=>{})
-        console.log(item)
-        fnSync()
+    for (let idx = 0; idx < arr.length; idx++) {
+        const element = arr[idx];
+        console.log('Elemento-1', element)
+        fnSincrona()
+        fnAsyncrona(1+element)
+        console.log('Elemento-2', element)
+    }
+
+    arr.forEach(element=>{
+        // console.log('Elemento', element)
     })
 
 }
