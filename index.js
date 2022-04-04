@@ -26,12 +26,6 @@ let nombres = ["Iván,Silvosa Rodriguez",
 "Antía,López Garcia",
 "Roque,Chao Rama"]
 
-function nombreFn(){
-
-}
-let nombreFn2 = function (){
-
-}
 
 let alumnos = nombres.map((nombre) => {
   let valores = nombre.split(',')
@@ -66,6 +60,14 @@ let guardarAlumno = async ()=>{
     console.log('OK- Conectado')
     const mAsignatura = require('./asignaturas.model')
     const mAlumno = require('./alumno.model')
+
+    let asignatura1 = new mAsignatura()
+    asignatura1.nombre = 'Lenguaje de Marcas'
+    asignatura1 = await asignatura1.save()
+
+    let asignatura2 = new mAsignatura()
+    asignatura2.nombre = 'Bases de Datos'
+    asignatura2 = await asignatura2.save()
 
    /*
 
