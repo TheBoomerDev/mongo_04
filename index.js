@@ -59,7 +59,8 @@ const mongoose = require('mongoose');
 let guardarAlumno = async ()=>{
     console.log('OK- Conectado')
     const mAsignatura = require('./asignaturas.model')
-    const mAlumno = require('./alumno.model')
+    const mAlumno     = require('./alumno.model')
+    const mAAlumno    = require('./asignatura_alumno.model')
 
     let asignatura1 = new mAsignatura()
     asignatura1.nombre = 'Lenguaje de Marcas'
@@ -97,25 +98,35 @@ let guardarAlumno = async ()=>{
       obj.nombre    = alumno.nombre
       obj.apellidos = alumno.apellidos
 
-      let notas = []
+      let notas   = []
+      let notasAA = []
       let asignaturasAlumno = alumno.asignaturas
       for (let idx = 0; idx < asignaturasAlumno.length; idx++) {
         const asignatura = asignaturasAlumno[idx]
+
+        const notaAA = new mAAlumno()
 
         let nota = {
           asignatura:'',
           nota: asignatura.nota
         }
+        notaAA.nota = asignatura.nota
 
         if (asignatura.nombre === 'Marcas'){
-          nota.asignatura = asignatura1._id
+          nota.asignatura   = asignatura1._id
+          notaAA.asignatura = asignatura1._id
         }else{
-          nota.asignatura = asignatura2._id
+          nota.asignatura   = asignatura2._id
+          notaAA.asignatura = asignatura2._id
         }
         notas.push(nota)
 
+        notaAA = await notaAA.save()
+        notasAA.push(notaAA)
+
       }
       obj.asignaturas = notas
+      obj.asignatura2 = notasAA
 
       obj = await obj.save()
       console.log('Alumno', obj)
