@@ -63,12 +63,17 @@ const mongoose = require('mongoose');
 
 
 let guardarAlumno = async ()=>{
+    console.log('OK- Conectado')
     const mAsignatura = require('./asignaturas.model')
+    const mAlumno = require('./alumno.model')
+
+   /*
 
     // Guardo La asignatura ''Marcas''
 
     let asignatura =  new mAsignatura()
     asignatura.nombre = 'Marcas'
+    asignatura.nota = 5
 
     // SAVE - Asyncrono
     asignatura.save().then((data)=>{
@@ -80,32 +85,19 @@ let guardarAlumno = async ()=>{
     // SAVE - Syncrono
     asignatura = await asignatura.save()
 
-
+   //*/
 
 
     // SYNC
     for (let idx = 0; idx < alumnos.length; idx++) {
-      const alumno = alumnos[idx];
-      let asign = new mAsignatura()
+      let obj = new mAlumno()
 
-      asign.nombre = alumno.nombre
-      console.log('Nombre:', alumno.nombre)
+      obj.nombre    = alumnos[idx].nombre
+      obj.apellidos = alumnos[idx].apellidos
 
-      asign = await asign.save()
+      obj = await obj.save()
+      console.log('Alumno', obj)
     }
-
-    for (const alumno of alumnos) {
-
-    }
-
-    // ASYNC - PARALELO
-    let salvar = (alumno) => {
-
-    }
-
-    alumnos.forEach(salvar)
-
-
 }
 
 let manejaError = (err) => {
