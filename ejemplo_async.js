@@ -31,6 +31,14 @@ let fnAsyncrona = (element)=>{
     setTimeout(callback, 3000)
 }
 
+let pasameCallback = (numero, fnCall) => {
+    console.log('Numero:', numero)
+
+    fnCall()
+}
+pasameCallback( 666, fnSincrona)
+
+
 let ejemplo = async ()=>{
 
     // crea un array de 100 elementos enteros
@@ -47,6 +55,9 @@ let ejemplo = async ()=>{
     arr.forEach(element=>{
         // console.log('Elemento', element)
     })
+
+
+
 
 }
 ejemplo()

@@ -36,7 +36,7 @@ const func2 = (param1, param2, param3) => {
     console.log('param1:', param1)
     console.log('param2:', param2)
     console.log('param3:', param3)
-    func1(param1, param3)
+    //func1(param1, param3)
 }
 
 const cosasDelDirecto = () => {
@@ -62,7 +62,44 @@ const cosasDelDirecto = () => {
         console.log(name)
     }
 
+    // Recorre todos lo elementos del array sin alterarlos
+    nombres.forEach((element, indice, array)=>{
+        console.log(element)
+    })
     nombres.forEach(printName)
+
+    // Cambia el contenido del array por el objeto que devolvamos por return
+    const otrosNombres = nombres.map((element, indice, array)=>{
+        return 'Cosa-Rara-Chico-'+indice
+    })
+
+    const cambiaNombres = (element, indice) => {
+        if(indice % 2 == 0){
+            return 'PAR: '+element
+        }
+        return 'IMPAR: '+element
+
+    }
+
+    const nuevoNombre = cambiaNombres('Pepe', 1)
+
+    const nombresPares = nombres.map((element, indice) => {
+        if(indice % 2 == 0){
+            return 'PAR: '+element
+        }
+        return 'IMPAR: '+element
+
+    })
+
+
+    // Filta los elementos pares y los mete en filtrado
+    const filtrado = nombres.filter((element, indice, array)=>{
+        return (indice % 2 == 0)
+    })
+
+    console.log(nombres)
+    console.log(otrosNombres)
+    console.log(filtrado)
 
 }
 cosasDelDirecto()
