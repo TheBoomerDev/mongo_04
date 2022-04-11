@@ -56,8 +56,5 @@ let ejemplo = async ()=>{
         // console.log('Elemento', element)
     })
 
-
-
-
 }
 ejemplo()
