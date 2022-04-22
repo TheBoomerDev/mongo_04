@@ -62,6 +62,9 @@ let guardarAlumno = async ()=>{
     const mAlumno     = require('./alumno.model')
     const mAAlumno    = require('./asignatura_alumno.model')
 
+
+    const asignaturas = await mAsignatura.find({})
+
     let asignatura1 = new mAsignatura()
     asignatura1.nombre = 'Lenguaje de Marcas'
     asignatura1 = await asignatura1.save()
