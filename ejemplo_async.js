@@ -1,3 +1,29 @@
+
+
+let fn01 = () => {
+
+    let promesa = new Promise((resolve, reject)=>{
+
+        let lista = []
+        for (let idx = 0; idx < 100; idx++) {
+            lista.push(idx)
+            if (idx === 99){
+                reject()
+            }
+        }
+
+        resolve(lista)
+        /*
+        setTimeout(()=>{
+            resolve('Gollum')
+        }, 30000)
+        /*/
+    })
+
+
+}
+
+
 let fnAsync = async ()=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
