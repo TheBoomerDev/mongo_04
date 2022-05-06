@@ -63,6 +63,8 @@ let guardarAlumno = async ()=>{
     const mAAlumno    = require('./asignatura_alumno.model')
 
 
+    const asignAlumno = await mAAlumno.find({}).populate('asignatura')
+
     const asignaturas = await mAsignatura.find({})
 
     let asignatura1 = new mAsignatura()

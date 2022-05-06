@@ -1,6 +1,6 @@
 
 
-let fn01 = () => {
+let fn01 = async () => {
 
     let promesa = new Promise((resolve, reject)=>{
 
@@ -19,6 +19,20 @@ let fn01 = () => {
         }, 30000)
         /*/
     })
+
+    const response = await promesa()
+    if (response != null){
+        console.log('PRIMERO')
+    }
+    console.log('SEGUNDO')
+
+    promesa.then((data)=>{
+        console.log(data)
+    }).catch((error)=>{
+        console.log('Error')
+    })
+
+    console.log('TERCERO')
 
 
 }
